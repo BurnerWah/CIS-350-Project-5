@@ -22,11 +22,9 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: Library
-          key: ${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Assets-
-            Packages-
-            ProjectSettings-
+            Library-
 
       # Build
       - name: Build project
