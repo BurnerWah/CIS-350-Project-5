@@ -10,6 +10,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           # lfs probably isn't needed, but there shouldn't be any harm in including it
           lfs: true
 
@@ -20,14 +21,6 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
-      # Test
-      - uses: game-ci/unity-test-runner@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          customImage: 'unityci/editor:ubuntu-2020.3.32f1-base-1'
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       # Build
       - name: Build project
