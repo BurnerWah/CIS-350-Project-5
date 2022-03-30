@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 452770424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0148, y: 5.1349, z: 0}
-  m_LocalScale: {x: 15.136789, y: 2.4164197, z: 1}
+  m_LocalScale: {x: 33.679356, y: 2.4164197, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -419,7 +419,7 @@ Transform:
   m_GameObject: {fileID: 923218965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0148, y: -5.08, z: 0}
-  m_LocalScale: {x: 15.136789, y: 2.4164197, z: 1}
+  m_LocalScale: {x: 33.679356, y: 2.4164197, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -545,6 +545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1497221694}
+  - component: {fileID: 1497221695}
   m_Layer: 0
   m_Name: Turret pivot
   m_TagString: Untagged
@@ -559,7 +560,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497221693}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.60000044, z: 1}
   m_LocalScale: {x: 1, y: 0.4250601, z: 1}
   m_Children:
@@ -567,7 +568,19 @@ Transform:
   - {fileID: 1209482164}
   m_Father: {fileID: 502661213}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1497221695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497221693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add7f8c06a07d1d4cb1bc62665f59f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2000315247
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000315247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
