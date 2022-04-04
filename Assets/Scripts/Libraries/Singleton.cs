@@ -18,7 +18,7 @@ namespace SubmarineBigfish
 
         public static bool IsInitialized => instance != null;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             if (instance == null)
             {
