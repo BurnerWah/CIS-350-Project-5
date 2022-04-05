@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class SubmarineTurret : MonoBehaviour
 {
+    [SerializeField] GameObject rawAim;
+    GameObject mouse;
+
+    // Settings
+    float startOffsettingDist = 3f, offsettingRange = 4f;
+
     // Start is called before the first frame update
     void Start()
     {
+        mouse = FollowMouse.GetMousePos();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 mouse = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y)); // not right?
-        transform.LookAt(new Vector3(mouse.x, mouse.y, transform.position.z), transform.position + Vector3.up);
+        float percentWithinRange = (Vector3.Distance(transform.position, mouse.transform.position) - startOffsettingDist) / offsettingRange;
+
+        transform.rotation = rawAim.transform.rotation;
+        transform.Rotate(new Vector3(0, 0, 20)); // I don't know how to directly rotate a Quaternion by 15 Euler degrees so this obj's transform gets used as a variable lol
+        Quaternion offsetAim = transform.rotation;
+        transform.rotation = Quaternion.Slerp(rawAim.transform.rotation, offsetAim, percentWithinRange);
     }
 }
