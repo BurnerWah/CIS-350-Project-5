@@ -44,7 +44,7 @@ public class Missile : MonoBehaviour
             {
                 transform.rotation = Quaternion.Slerp(startingAngle, idealAngleObj.transform.rotation, percentOnTarget);
             }
-            else
+            else if(!onTarget)
             {
                 Destroy(idealAngleObj);
                 Destroy(followMouse.gameObject);
@@ -63,11 +63,13 @@ public class Missile : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Enemy")
         {
+            // make other die
             // gain score or something
             Explode();
         }
         else if(collision.gameObject.tag == "Friend")
         {
+            // make other die
             // lose score or something
             Explode();
         }

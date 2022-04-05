@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject missilePrefab;
 
     // Settings
-    float leftrightSpeed = 10, updownSpeed = 7;
+    float leftrightSpeed = 7, updownSpeed = 5;
     float missileCooldown = .5f, curr_missileCooldown = 0;
     float rBoundary = 8, lBoundary = -8, upBoundary = 3, downBoundary = -3;
 
