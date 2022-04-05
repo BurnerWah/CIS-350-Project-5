@@ -135,7 +135,7 @@ fabric.properties
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
-# /[Uu]ser[Ss]ettings/
+/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -143,6 +143,7 @@ fabric.properties
 
 # Recordings can get excessive in size
 /[Rr]ecordings/
+
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
@@ -626,3 +627,4 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/unity,visualstudio,visualstudiocode,rider,macos,windows,linux
 
+![Aa]ssets/**/*.meta
