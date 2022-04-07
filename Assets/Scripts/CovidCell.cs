@@ -1,6 +1,6 @@
 /* Robert Krawczyk
  * Project 5
- * Dash and melee attack auto
+ * Dash and get BIG every few seconds
  */
 
 using System.Collections;
@@ -14,10 +14,10 @@ public class CovidCell : MonoBehaviour
     Rigidbody2D rb;
 
     // Settings
-    [SerializeField] float attackScale = 1.3f, attackTransitionTime = .5f, attackDuration = 1.5f, attackForce = 150, attackCooldown = 5, sightRange = 3;
+    public float restingScale = 1, attackScale = 1.6f, attackTransitionTime = .2f, attackDuration = 1.5f, attackForce = 350, attackCooldown = 3.5f, sightRange = 10;
 
     // Backend
-    float curr_attackCooldown=0, curr_attackTime=0;
+    float curr_attackCooldown=3, curr_attackTime=0;
     bool attacking = false;
 
     // Start is called before the first frame update
@@ -50,12 +50,12 @@ public class CovidCell : MonoBehaviour
             if(curr_attackTime <= attackTransitionTime)
             {
                 // Getting BIG
-                transform.localScale = Vector3.one * Mathf.Lerp(1, attackScale, (curr_attackTime-0) / attackTransitionTime);
+                transform.localScale = Vector3.one * Mathf.Lerp(restingScale, attackScale, (curr_attackTime-0) / attackTransitionTime);
             }
             else if(curr_attackTime > attackDuration && curr_attackTime <= attackDuration + attackTransitionTime)
             {
                 // Getting back to normal
-                transform.localScale = Vector3.one * Mathf.Lerp(attackScale, 1, (curr_attackTime-attackDuration) / attackTransitionTime);
+                transform.localScale = Vector3.one * Mathf.Lerp(attackScale, restingScale, (curr_attackTime-attackDuration) / attackTransitionTime);
             }
             else if(curr_attackTime > attackDuration + attackTransitionTime)
             {

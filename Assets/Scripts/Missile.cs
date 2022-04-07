@@ -32,6 +32,8 @@ public class Missile : MonoBehaviour
 
         // Determine targeting duration
         targetingDuration = Mathf.Max( (1/speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0 ); // can't be negative
+
+        if(startingAngle == idealAngleObj.transform.rotation) { onTarget = true; } // save computation time if shooting straight
     }
 
     // Update is called once per frame
@@ -44,16 +46,19 @@ public class Missile : MonoBehaviour
 
             // Rotate if targeting
             timeAlive += Time.deltaTime;
-            float percentOnTarget = timeAlive / targetingDuration;
-            if (percentOnTarget <= 1)
+            if (!onTarget)
             {
-                transform.rotation = Quaternion.Slerp(startingAngle, idealAngleObj.transform.rotation, percentOnTarget);
-            }
-            else if(!onTarget)
-            {
-                Destroy(idealAngleObj);
-                Destroy(followMouse.gameObject);
-                onTarget = true;
+                float percentOnTarget = timeAlive / targetingDuration;
+                if (!onTarget && percentOnTarget < 1)
+                {
+                    transform.rotation = Quaternion.Slerp(startingAngle, idealAngleObj.transform.rotation, percentOnTarget);
+                }
+                else
+                {
+                    Destroy(idealAngleObj);
+                    Destroy(followMouse.gameObject);
+                    onTarget = true;
+                }
             }
         }
     }
