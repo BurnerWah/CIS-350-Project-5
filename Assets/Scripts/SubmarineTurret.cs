@@ -1,3 +1,8 @@
+/* Robert Krawczyk
+ * Project 5
+ * Aims at mouse, a little bit off at further ranges so missile curves
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +13,8 @@ public class SubmarineTurret : MonoBehaviour
     GameObject mouse;
 
     // Settings
-    float startOffsettingDist = 3f, offsettingRange = 4f;
+    bool offsetting = false; // offsetting can be annoying
+    float offsetDegrees = 20, startOffsettingDist = 3f, offsettingRange = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +26,17 @@ public class SubmarineTurret : MonoBehaviour
     void Update()
     {
         float percentWithinRange = (Vector3.Distance(transform.position, mouse.transform.position) - startOffsettingDist) / offsettingRange;
+        float t = offsetting ? percentWithinRange : 0; // If zero, just shoots straight
 
         transform.rotation = rawAim.transform.rotation;
-        transform.Rotate(new Vector3(0, 0, 20)); // I don't know how to directly rotate a Quaternion by 15 Euler degrees so this obj's transform gets used as a variable lol
+        float final_offsetDegrees = offsetDegrees;
+        float z = (transform.rotation.eulerAngles.z + 360) % 360;
+        if (z < 90 || z >= 270)
+        {
+            final_offsetDegrees *= -1;
+        }
+        transform.Rotate(Vector3.forward * final_offsetDegrees);
         Quaternion offsetAim = transform.rotation;
-        transform.rotation = Quaternion.Slerp(rawAim.transform.rotation, offsetAim, percentWithinRange);
+        transform.rotation = Quaternion.Slerp(rawAim.transform.rotation, offsetAim, t);
     }
 }

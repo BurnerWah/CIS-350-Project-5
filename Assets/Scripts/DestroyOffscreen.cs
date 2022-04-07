@@ -1,3 +1,8 @@
+/* Robert Krawczyk
+ * Project 5
+ * Destroys self when out of bounds
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,8 @@
+/* Robert Krawczyk
+ * Project 5
+ * Moves from input, stays in boundaries, and shoots from input
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

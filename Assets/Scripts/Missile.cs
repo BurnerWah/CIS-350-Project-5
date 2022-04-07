@@ -1,3 +1,8 @@
+/* Robert Krawczyk
+ * Project 5
+ * Targets, moves, turns slightly, explodes and kills
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +14,7 @@ public class Missile : MonoBehaviour
     [SerializeField] FollowMouse followMouse;
 
     // Settings
-    float speed = 15, aimSecondsEarly = .25f;
+    public float speed = 15, aimSecondsEarly = 0.01f;
 
     // Backend
     Quaternion startingAngle;
@@ -52,29 +57,31 @@ public class Missile : MonoBehaviour
             }
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    
+    void OnTrigger2DOrCollision2D(GameObject obj)
     {
-        print("hit");
-        if(collision.gameObject.tag == "Wall")
+        if (obj.CompareTag("Wall"))
         {
+            print("hit wall. stick to wall");
             sticking = true;
             GetComponent<BoxCollider2D>().enabled = false;
-            transform.parent = collision.transform;
+            transform.parent = obj.transform;
         }
-        else if(collision.gameObject.tag == "Enemy")
+        else if(obj.CompareTag("Enemy"))
         {
-            // make other die
-            // gain score or something
+            print("hit covid. gain score or something");
+            Destroy(obj);
             Explode();
         }
-        else if(collision.gameObject.tag == "Friend")
+        else if(obj.CompareTag("Friend"))
         {
-            // make other die
-            // lose score or something
+            print("hit red blood cell. lose score or something");
+            Destroy(obj);
             Explode();
         }
-        
     }
+    void OnCollisionEnter2D(Collision2D collision) { OnTrigger2DOrCollision2D(collision.gameObject); }
+    private void OnTriggerEnter2D(Collider2D collision) { OnTrigger2DOrCollision2D(collision.gameObject); }
 
     void Explode()
     {
