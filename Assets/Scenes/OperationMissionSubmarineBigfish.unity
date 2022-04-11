@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 526605108}
   - component: {fileID: 526605107}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Propeller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,7 +488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526605105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.843, z: 0}
+  m_LocalPosition: {x: 0, y: -0.843, z: -0.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 502661213}
@@ -1262,6 +1262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawAim: {fileID: 1154009138}
+  offsetting: 1
 --- !u!212 &1497221696
 SpriteRenderer:
   m_ObjectHideFlags: 0

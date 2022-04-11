@@ -13,7 +13,7 @@ public class SubmarineTurret : MonoBehaviour
     GameObject mouse;
 
     // Settings
-    bool offsetting = false; // offsetting can be annoying
+    public bool offsetting = false; // offsetting can be annoying
     float offsetDegrees = 20, startOffsettingDist = 3f, offsettingRange = 4f;
 
     void Start()
