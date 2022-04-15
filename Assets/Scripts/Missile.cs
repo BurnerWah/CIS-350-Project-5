@@ -1,4 +1,4 @@
-/* Robert Krawczyk
+/* Robert Krawczyk, Conner Ogle
  * Project 5
  * Targets, moves, turns slightly, explodes and kills
  */
@@ -12,6 +12,7 @@ public class Missile : MonoBehaviour
     // References
     [SerializeField] GameObject idealAngleObj;
     [SerializeField] FollowMouse followMouse;
+    public BossCovid BossCovidScript;
 
     // Settings
     public float speed = 15, aimSecondsEarly = 0.01f;
@@ -34,6 +35,8 @@ public class Missile : MonoBehaviour
         targetingDuration = Mathf.Max( (1/speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0 ); // can't be negative
 
         if(startingAngle == idealAngleObj.transform.rotation) { onTarget = true; } // save computation time if shooting straight
+
+        BossCovidScript = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossCovid>();
     }
 
     // Update is called once per frame
@@ -61,6 +64,7 @@ public class Missile : MonoBehaviour
                 }
             }
         }
+        
     }
     
     void OnTrigger2DOrCollision2D(GameObject obj)
@@ -76,6 +80,13 @@ public class Missile : MonoBehaviour
         {
             print("hit covid. gain score or something");
             Destroy(obj);
+            Explode();
+        }
+        //added boss tag, decrements his health by 1 each hit
+        else if (obj.CompareTag("Boss"))
+        {
+            BossCovidScript.BossHealth = BossCovidScript.BossHealth-1;
+            print(BossCovidScript.BossHealth);
             Explode();
         }
         else if(obj.CompareTag("Friend"))

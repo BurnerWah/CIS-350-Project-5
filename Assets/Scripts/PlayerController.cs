@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform missileSpawnPosition;
     [SerializeField] GameObject missilePrefab;
 
+    //health for now
+    public int playerHealth= 10;
+
     // Settings
     float leftrightSpeed = 7, updownSpeed = 5;
     float missileCooldown = .5f, curr_missileCooldown = 0;

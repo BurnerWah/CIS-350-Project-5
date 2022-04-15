@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 6314973795530341187}
   m_Layer: 0
   m_Name: Missile
-  m_TagString: Untagged
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,6 +329,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idealAngleObj: {fileID: 3930619446891888903}
   followMouse: {fileID: 4929866563762552591}
+  speed: 15
+  aimSecondsEarly: 0.01
 --- !u!114 &6314973795530341187
 MonoBehaviour:
   m_ObjectHideFlags: 0
