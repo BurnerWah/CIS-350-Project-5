@@ -1,15 +1,23 @@
+/*
+ * Robert Krawczyk, Conner Ogle
+ * Project 5
+ * Targets, moves, turns slightly, explodes and kills
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Missile : MonoBehaviour
 {
     // References
     [SerializeField] GameObject idealAngleObj;
     [SerializeField] FollowMouse followMouse;
+    public BossCovid BossCovidScript;
 
     // Settings
-    float speed = 15, aimSecondsEarly = .25f;
+    public float speed = 15, aimSecondsEarly = 0.01f;
 
     // Backend
     Quaternion startingAngle;
@@ -26,7 +34,16 @@ public class Missile : MonoBehaviour
         followMouse.Lock();
 
         // Determine targeting duration
-        targetingDuration = Mathf.Max( (1/speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0 ); // can't be negative
+        targetingDuration = Mathf.Max((1 / speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0); // can't be negative
+
+        if (startingAngle == idealAngleObj.transform.rotation) { onTarget = true; } // save computation time if shooting straight
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "BossLevel")
+        {
+            BossCovidScript = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossCovid>();
+        }
+
     }
 
     // Update is called once per frame
@@ -39,42 +56,55 @@ public class Missile : MonoBehaviour
 
             // Rotate if targeting
             timeAlive += Time.deltaTime;
-            float percentOnTarget = timeAlive / targetingDuration;
-            if (percentOnTarget <= 1)
+            if (!onTarget)
             {
-                transform.rotation = Quaternion.Slerp(startingAngle, idealAngleObj.transform.rotation, percentOnTarget);
-            }
-            else if(!onTarget)
-            {
-                Destroy(idealAngleObj);
-                Destroy(followMouse.gameObject);
-                onTarget = true;
+                float percentOnTarget = timeAlive / targetingDuration;
+                if (!onTarget && percentOnTarget < 1)
+                {
+                    transform.rotation = Quaternion.Slerp(startingAngle, idealAngleObj.transform.rotation, percentOnTarget);
+                }
+                else
+                {
+                    Destroy(idealAngleObj);
+                    Destroy(followMouse.gameObject);
+                    onTarget = true;
+                }
             }
         }
+
     }
-    void OnCollisionEnter2D(Collision2D collision)
+
+    void OnTrigger2DOrCollision2D(GameObject obj)
     {
-        print("hit");
-        if(collision.gameObject.tag == "Wall")
+        if (obj.CompareTag("Wall"))
         {
+            print("hit wall. stick to wall");
             sticking = true;
             GetComponent<BoxCollider2D>().enabled = false;
-            transform.parent = collision.transform;
+            transform.parent = obj.transform;
         }
-        else if(collision.gameObject.tag == "Enemy")
+        else if (obj.CompareTag("Enemy"))
         {
-            // make other die
-            // gain score or something
+            print("hit covid. gain score or something");
+            Destroy(obj);
             Explode();
         }
-        else if(collision.gameObject.tag == "Friend")
+        //added boss tag, decrements his health by 1 each hit
+        else if (obj.CompareTag("Boss"))
         {
-            // make other die
-            // lose score or something
+            BossCovidScript.BossHealth = BossCovidScript.BossHealth - 1;
+            print(BossCovidScript.BossHealth);
             Explode();
         }
-        
+        else if (obj.CompareTag("Friend"))
+        {
+            print("hit red blood cell. lose score or something");
+            Destroy(obj);
+            Explode();
+        }
     }
+    void OnCollisionEnter2D(Collision2D collision) { OnTrigger2DOrCollision2D(collision.gameObject); }
+    private void OnTriggerEnter2D(Collider2D collision) { OnTrigger2DOrCollision2D(collision.gameObject); }
 
     void Explode()
     {

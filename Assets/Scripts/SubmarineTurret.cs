@@ -1,3 +1,9 @@
+/*
+ * Robert Krawczyk
+ * Project 5
+ * Aims at mouse, a little bit off at further ranges so missile curves
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,22 +14,29 @@ public class SubmarineTurret : MonoBehaviour
     GameObject mouse;
 
     // Settings
-    float startOffsettingDist = 3f, offsettingRange = 4f;
+    public bool offsetting = false; // offsetting can be annoying
+    float offsetDegrees = 20, startOffsettingDist = 3f, offsettingRange = 4f;
 
-    // Start is called before the first frame update
     void Start()
     {
         mouse = FollowMouse.GetMousePos();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float percentWithinRange = (Vector3.Distance(transform.position, mouse.transform.position) - startOffsettingDist) / offsettingRange;
+        float t = offsetting ? percentWithinRange : 0; // If zero, just shoots straight
 
+        // This object's final rotation ends up somewhere between the rawAim object's rotation (shooting straight), and that angle +/- 20 degrees
         transform.rotation = rawAim.transform.rotation;
-        transform.Rotate(new Vector3(0, 0, 20)); // I don't know how to directly rotate a Quaternion by 15 Euler degrees so this obj's transform gets used as a variable lol
+        float final_offsetDegrees = offsetDegrees;
+        float z = (transform.rotation.eulerAngles.z + 360) % 360; // should end up with values in between 0 and 360
+        if (z < 90 || z >= 270) // offset up if aiming up, offset down if aiming down (not working rn)
+        {
+            final_offsetDegrees *= -1;
+        }
+        transform.Rotate(Vector3.forward * final_offsetDegrees); // +/= 20 degrees
         Quaternion offsetAim = transform.rotation;
-        transform.rotation = Quaternion.Slerp(rawAim.transform.rotation, offsetAim, percentWithinRange);
+        transform.rotation = Quaternion.Slerp(rawAim.transform.rotation, offsetAim, t); // somewhere in between (t is the percentage)
     }
 }
