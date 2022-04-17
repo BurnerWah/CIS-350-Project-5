@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class UpAndDown : MonoBehaviour
 {
-    float speed = 2;
+    float speed = 4;
     Rigidbody2D rb;
     bool movingUp = false;
 
