@@ -1,4 +1,4 @@
-/* Conner Ogle
+/* Conner Ogle, Gerard Lamoureux
  * Project 5
  * Simple script that gives the boss some movement
  */
@@ -8,8 +8,9 @@ using UnityEngine;
 
 public class UpAndDown : MonoBehaviour
 {
-    float forcePerSecond = 100000;
+    float speed = 2;
     Rigidbody2D rb;
+    bool movingUp = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,31 +22,23 @@ public class UpAndDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //DownForce();
-        if (transform.position.y >= 1.8)
+        if(movingUp)
         {
-            stopForce();
-            DownForce();
+            transform.position += transform.up * speed * Time.deltaTime;
+            if (transform.position.y >= 1.55)
+            {
+                movingUp = false;
+            }
         }
-        else if (transform.position.y <= -1.8)
+        else
         {
-            stopForce();
-            UpForce();
+            transform.position -= transform.up * speed * Time.deltaTime;
+            if (transform.position.y <= -1.55)
+            {
+                movingUp = true;
+            }
         }
     }
-    void UpForce ()
-    {
-        rb.AddForce(Vector2.up * forcePerSecond * Time.deltaTime);
-      
-    }
-    void DownForce()
-    {
-        rb.AddForce(Vector2.down * forcePerSecond * Time.deltaTime);
-    }
-    void stopForce()
-    {
-        rb.velocity = Vector2.zero;
-        rb.angularVelocity = 0;
-    }
+
 }
 
