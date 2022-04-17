@@ -1,4 +1,5 @@
-/* Conner Ogle, Gerard Lamoureux
+/*
+ * Conner Ogle, Gerard Lamoureux
  * Project 5
  * Simple script that gives the boss some movement
  */
@@ -16,13 +17,13 @@ public class UpAndDown : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(movingUp)
+        if (movingUp)
         {
             transform.position += transform.up * speed * Time.deltaTime;
             if (transform.position.y >= 1.55)

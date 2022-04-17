@@ -1,4 +1,5 @@
-/* Conner Ogle
+/*
+ * Conner Ogle
  * Project 5
  * Script for Boss Object, shoots covid cells at player
  */
@@ -49,20 +50,20 @@ public class BossCovid : MonoBehaviour
         //celebration or something
         Destroy(gameObject);
     }
-   
+
     //here the boss shoots covid cells at player, currently has no effect on the player if hit. These cells can still be destroyed; gameplay could involve having to destroy them to survive or we change the prefab so that the player has to dodge them
     void attack()
     {
-        
+
         if (curr_attackCooldown <= 0)
         {
-           GameObject covidAttack = Instantiate(CovidCell, AttackSpawnPosition.position, AttackSpawnPosition.rotation);
-           covidRb = covidAttack.gameObject.GetComponent<Rigidbody2D>();
-           covidRb.AddForce(attackForce * Vector3.Normalize(player.transform.position - covidAttack.transform.position));
-           curr_attackCooldown = attackCooldown;
-           
+            GameObject covidAttack = Instantiate(CovidCell, AttackSpawnPosition.position, AttackSpawnPosition.rotation);
+            covidRb = covidAttack.gameObject.GetComponent<Rigidbody2D>();
+            covidRb.AddForce(attackForce * Vector3.Normalize(player.transform.position - covidAttack.transform.position));
+            curr_attackCooldown = attackCooldown;
+
         }
-        
+
     }
-   
+
 }

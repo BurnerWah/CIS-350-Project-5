@@ -1,4 +1,5 @@
-/* Robert Krawczyk
+/*
+ * Robert Krawczyk
  * Project 5
  * Aims at mouse, a little bit off at further ranges so missile curves
  */

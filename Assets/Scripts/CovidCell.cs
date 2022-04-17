@@ -1,4 +1,5 @@
-/* Robert Krawczyk
+/*
+ * Robert Krawczyk
  * Project 5
  * Dash and get BIG every few seconds
  */
@@ -17,7 +18,7 @@ public class CovidCell : MonoBehaviour
     public float restingScale = 1, attackScale = 1.6f, attackTransitionTime = .2f, attackDuration = 1.5f, attackForce = 350, attackCooldown = 3.5f, sightRange = 10;
 
     // Backend
-    float curr_attackCooldown=3, curr_attackTime=0;
+    float curr_attackCooldown = 3, curr_attackTime = 0;
     bool attacking = false;
 
     // Start is called before the first frame update
@@ -32,32 +33,32 @@ public class CovidCell : MonoBehaviour
     {
         // Time to start attack?
         curr_attackCooldown -= Time.deltaTime;
-        if(curr_attackCooldown <= 0)
+        if (curr_attackCooldown <= 0)
         {
             curr_attackCooldown = attackCooldown;
             // If player in range, attack
-            if(Vector2.Distance(transform.position, player.transform.position) <= sightRange)
+            if (Vector2.Distance(transform.position, player.transform.position) <= sightRange)
             {
                 StartAttack();
             }
         }
-        
+
         // While attacking
-        if(attacking)
+        if (attacking)
         {
             curr_attackTime += Time.deltaTime;
 
-            if(curr_attackTime <= attackTransitionTime)
+            if (curr_attackTime <= attackTransitionTime)
             {
                 // Getting BIG
-                transform.localScale = Vector3.one * Mathf.Lerp(restingScale, attackScale, (curr_attackTime-0) / attackTransitionTime);
+                transform.localScale = Vector3.one * Mathf.Lerp(restingScale, attackScale, (curr_attackTime - 0) / attackTransitionTime);
             }
-            else if(curr_attackTime > attackDuration && curr_attackTime <= attackDuration + attackTransitionTime)
+            else if (curr_attackTime > attackDuration && curr_attackTime <= attackDuration + attackTransitionTime)
             {
                 // Getting back to normal
-                transform.localScale = Vector3.one * Mathf.Lerp(attackScale, restingScale, (curr_attackTime-attackDuration) / attackTransitionTime);
+                transform.localScale = Vector3.one * Mathf.Lerp(attackScale, restingScale, (curr_attackTime - attackDuration) / attackTransitionTime);
             }
-            else if(curr_attackTime > attackDuration + attackTransitionTime)
+            else if (curr_attackTime > attackDuration + attackTransitionTime)
             {
                 // Back to normal
                 attacking = false;

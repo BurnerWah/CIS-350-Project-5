@@ -1,4 +1,5 @@
-/* Robert Krawczyk
+/*
+ * Robert Krawczyk
  * Project 5
  * Constantly spinning
  */
@@ -13,7 +14,7 @@ public class Spin : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()

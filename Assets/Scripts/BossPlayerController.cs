@@ -1,4 +1,5 @@
-/* Gerard Lamoureux
+/*
+ * Gerard Lamoureux
  * Project 5
  * Stops player from exploiting boss attacks (holds them to a certain x value)
  */

@@ -1,3 +1,8 @@
+/*
+ * Conner Ogle
+ * Project 5
+ * Manages the tutorial
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,11 +53,11 @@ public class TutorialManager : MonoBehaviour
         {
             Tutorialbox.text = "Here is a Covid Cell! This is the point of our mission, destroy it! \nPress Space to Continue";
 
-            if(!spawnCovid)
+            if (!spawnCovid)
             {
                 spawnCovid = true;
                 SpawnPreab(CovidCell);
-                
+
             }
 
             if (SpacePressed() == true)
@@ -64,7 +69,7 @@ public class TutorialManager : MonoBehaviour
         {
             Tutorialbox.text = "Here is a healthy blood cell. Shooting these will result in damage to the person \nPress Space to Continue";
 
-            
+
             if (!spawnBlood)
             {
                 spawnBlood = true;
@@ -92,7 +97,7 @@ public class TutorialManager : MonoBehaviour
             return true;
         }
         return false;
-        
+
     }
     void SpawnPreab(GameObject Cell)
     {

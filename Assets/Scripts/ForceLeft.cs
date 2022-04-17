@@ -1,4 +1,5 @@
-/* Robert Krawczyk
+/*
+ * Robert Krawczyk
  * Project 5
  * Placeholder until open map is implemented. Constantly adds force left
  */

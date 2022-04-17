@@ -1,4 +1,5 @@
-/* Robert Krawczyk
+/*
+ * Robert Krawczyk
  * Project 5
  * Reliably is at mouse position
  */

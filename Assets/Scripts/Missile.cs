@@ -1,4 +1,5 @@
-/* Robert Krawczyk, Conner Ogle
+/*
+ * Robert Krawczyk, Conner Ogle
  * Project 5
  * Targets, moves, turns slightly, explodes and kills
  */
@@ -33,16 +34,16 @@ public class Missile : MonoBehaviour
         followMouse.Lock();
 
         // Determine targeting duration
-        targetingDuration = Mathf.Max( (1/speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0 ); // can't be negative
+        targetingDuration = Mathf.Max((1 / speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0); // can't be negative
 
-        if(startingAngle == idealAngleObj.transform.rotation) { onTarget = true; } // save computation time if shooting straight
+        if (startingAngle == idealAngleObj.transform.rotation) { onTarget = true; } // save computation time if shooting straight
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "BossLevel")
         {
             BossCovidScript = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossCovid>();
         }
-        
+
     }
 
     // Update is called once per frame
@@ -70,9 +71,9 @@ public class Missile : MonoBehaviour
                 }
             }
         }
-        
+
     }
-    
+
     void OnTrigger2DOrCollision2D(GameObject obj)
     {
         if (obj.CompareTag("Wall"))
@@ -82,7 +83,7 @@ public class Missile : MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
             transform.parent = obj.transform;
         }
-        else if(obj.CompareTag("Enemy"))
+        else if (obj.CompareTag("Enemy"))
         {
             print("hit covid. gain score or something");
             Destroy(obj);
@@ -91,11 +92,11 @@ public class Missile : MonoBehaviour
         //added boss tag, decrements his health by 1 each hit
         else if (obj.CompareTag("Boss"))
         {
-            BossCovidScript.BossHealth = BossCovidScript.BossHealth-1;
+            BossCovidScript.BossHealth = BossCovidScript.BossHealth - 1;
             print(BossCovidScript.BossHealth);
             Explode();
         }
-        else if(obj.CompareTag("Friend"))
+        else if (obj.CompareTag("Friend"))
         {
             print("hit red blood cell. lose score or something");
             Destroy(obj);

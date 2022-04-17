@@ -1,8 +1,8 @@
 /*
-* Gerard Lamoureux
-* Project 5
-* Handles background repeating
-*/
+ * Gerard Lamoureux
+ * Project 5
+ * Handles background repeating
+ */
 
 using System.Collections;
 using System.Collections.Generic;
