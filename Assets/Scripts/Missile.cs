@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Missile : MonoBehaviour
 {
@@ -35,8 +36,13 @@ public class Missile : MonoBehaviour
         targetingDuration = Mathf.Max( (1/speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0 ); // can't be negative
 
         if(startingAngle == idealAngleObj.transform.rotation) { onTarget = true; } // save computation time if shooting straight
-
-        BossCovidScript = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossCovid>();
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "BossLevel")
+        {
+            BossCovidScript = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossCovid>();
+        }
+        
     }
 
     // Update is called once per frame
