@@ -1,5 +1,7 @@
 /*
- *
+ * Jaden Pleasants
+ * Project 5
+ * Handles Scene management
  */
 using System;
 using System.Collections;
