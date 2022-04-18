@@ -1,3 +1,9 @@
+/*
+ * Gerard Lamoureux
+ * Project 5
+ * Adjusts the camera for the story
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

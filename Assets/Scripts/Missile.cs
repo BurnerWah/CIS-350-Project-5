@@ -1,5 +1,5 @@
 /*
- * Robert Krawczyk, Conner Ogle, Jaden Pleasants
+ * Robert Krawczyk, Conner Ogle, Jaden Pleasants, Gerard Lamoureux
  * Project 5
  * Targets, moves, turns slightly, explodes and kills
  */
@@ -44,10 +44,6 @@ public class Missile : MonoBehaviour
         }
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "BossLevel")
-        {
-            BossCovidScript = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossCovid>();
-        }
     }
 
     // Update is called once per frame
@@ -96,8 +92,8 @@ public class Missile : MonoBehaviour
         //added boss tag, decrements his health by 1 each hit
         else if (obj.CompareTag("Boss"))
         {
-            BossCovidScript.BossHealth = BossCovidScript.BossHealth - 1;
-            print(BossCovidScript.BossHealth);
+            obj.GetComponent<BossCovid>().BossHealth = obj.GetComponent<BossCovid>().BossHealth - 1;
+            print(obj.GetComponent<BossCovid>().BossHealth);
             Explode();
         }
         else if (obj.CompareTag("Friend"))

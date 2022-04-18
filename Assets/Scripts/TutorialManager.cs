@@ -1,5 +1,5 @@
 /*
- * Conner Ogle, Jaden Pleasants
+ * Conner Ogle, Jaden Pleasants, Gerard Lamoureux
  * Project 5
  * Manages the tutorial
  */
@@ -80,7 +80,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
             case TutorialState.Finished:
-                Tutorialbox.text = "Tutorial Finished! You are prepared to proceed with operation Big Fish. \nPress Space to Continue";
+                Tutorialbox.text = "Tutorial Finished! You are prepared to proceed with operation Big Fish. \nPress Main Menu to return to the menu!";
                 if (GetSpacePressed())
                 {
                     Debug.Log("Done");

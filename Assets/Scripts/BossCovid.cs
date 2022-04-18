@@ -1,5 +1,5 @@
 /*
- * Conner Ogle, Jaden Pleasants
+ * Conner Ogle, Jaden Pleasants, Gerard Lamoureux
  * Project 5
  * Script for Boss Object, shoots covid cells at player
  */

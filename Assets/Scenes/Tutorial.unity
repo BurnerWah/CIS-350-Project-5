@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  Tutorialbox: {fileID: 0}
+  Tutorialbox: {fileID: 2030780180}
   CovidCell: {fileID: 7550653908114762795, guid: 64e1d06b0b6ce644d8f27f493be32d0d, type: 3}
   BloodCell: {fileID: 5056778519413792236, guid: dff139d5823ce5e47b7501c024b55c66, type: 3}
 --- !u!4 &1968612743
