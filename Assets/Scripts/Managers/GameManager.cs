@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 {
     Stack<string> levelStack = new Stack<string>();
 
-    public GameObject mainMenuCanvas;
+    public int humanHealth = 5;
 
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject levelOneButton;
@@ -39,16 +39,17 @@ public class GameManager : Singleton<GameManager>
         gameOverUI.SetActive(true);
         levelOneButton.SetActive(true);
         levelTwoButton.SetActive(false);
+        humanHealth = 5;
         Pause();
         if(win)
         {
-            gameObject.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
+            gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
                 "You Win!\nYou Killed Big Covid!";
         }
         else
         {
-            gameObject.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
-                "You Lose!\nRemember to Dodge!";
+            gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
+                "You Lose!\nRemember to Shoot the Covid Cells!";
         }
     }
 
@@ -57,8 +58,9 @@ public class GameManager : Singleton<GameManager>
         gameOverUI.SetActive(true);
         levelOneButton.SetActive(false);
         levelTwoButton.SetActive(true);
+        humanHealth = 5;
         Pause();
-        gameObject.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
+        gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
                 "Game Over!\nYou killed " + kills + " Cells!";
     }
 

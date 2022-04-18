@@ -15,6 +15,10 @@ public class DestroyOffscreen : MonoBehaviour
     {
         if (Mathf.Abs(transform.position.x) > leftrightBoundary || Mathf.Abs(transform.position.y) > updownBoundary)
         {
+            if(gameObject.CompareTag("Enemy"))
+            {
+                GameManager.Instance.humanHealth--;
+            }
             Destroy(gameObject);
         }
     }
