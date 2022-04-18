@@ -1,9 +1,8 @@
 /*
- * Robert Krawczyk
+ * Robert Krawczyk, Jaden Pleasants
  * Project 5
  * Dash and get BIG every few seconds
  */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,17 +14,23 @@ public class CovidCell : MonoBehaviour
     Rigidbody2D rb;
 
     // Settings
-    public float restingScale = 1, attackScale = 1.6f, attackTransitionTime = .2f, attackDuration = 1.5f, attackForce = 350, attackCooldown = 3.5f, sightRange = 10;
+    public float restingScale = 1;
+    public float attackScale = 1.6f;
+    public float attackTransitionTime = .2f;
+    public float attackDuration = 1.5f;
+    public float attackForce = 350;
+    public float attackCooldown = 3.5f;
+    public float sightRange = 10;
 
     // Backend
     float curr_attackCooldown = 3, curr_attackTime = 0;
     bool attacking = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player"); // Eventually remove this and have the Spawn Manager set it for me, to save on computation
+        // Eventually remove this and have the Spawn Manager set it for me, to save on computation
+        player = GameObject.Find("/Player");
     }
 
     // Update is called once per frame
