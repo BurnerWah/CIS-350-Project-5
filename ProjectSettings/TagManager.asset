@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Wall
+  - Enemy
+  - Friend
+  - Boss
+  - Missile
+>>>>>>> parent of 7223566 (Merge pull request #8 from YaBoiBurner/merge-conflict)
   layers:
   - Default
   - TransparentFX

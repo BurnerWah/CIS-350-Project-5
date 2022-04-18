@@ -1,5 +1,5 @@
 /*
- * Robert Krawczyk, Jaden Pleasants, Conner Ogle
+ * Robert Krawczyk, Jaden Pleasants
  * Project 5
  * Moves from input, stays in boundaries, and shoots from input
  */
@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject missilePrefab;
 
     //health for now
+    public int playerHealth = 10;
 
     // Settings
     readonly float leftrightSpeed = 7;

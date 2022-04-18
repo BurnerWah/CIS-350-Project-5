@@ -1,5 +1,5 @@
 /*
- * Conner Ogle, Jaden Pleasants, Gerard Lamoureux
+ * Conner Ogle, Jaden Pleasants
  * Project 5
  * Script for Boss Object, shoots covid cells at player
  */
@@ -12,7 +12,6 @@ public class BossCovid : MonoBehaviour
 {
     // boss health, 10 hits to kill
     public int BossHealth = 10;
-
 
     // variables
     public GameObject player;
@@ -29,7 +28,6 @@ public class BossCovid : MonoBehaviour
 
     void Start()
     {
-        
         covidRb = CovidCell.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("/Player");
     }
@@ -41,12 +39,15 @@ public class BossCovid : MonoBehaviour
         {
             Death();
 <<<<<<< HEAD
+<<<<<<< HEAD
             GameObject.Find("In Game Canvas").SetActive(false);
             GameManager.Instance.BossLevelGameOver(true);
 =======
             GameManager.Instance.UnloadCurrentLevel();
             GameManager.Instance.LoadLevel("MainMenu");
 >>>>>>> 72235660cbc85d8c03c64be0d31e17b8aea259a2
+=======
+>>>>>>> parent of 7223566 (Merge pull request #8 from YaBoiBurner/merge-conflict)
         }
         curr_attackCooldown -= Time.deltaTime;
     }

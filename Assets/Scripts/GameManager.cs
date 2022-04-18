@@ -24,6 +24,6 @@ public class GameManager : Singleton<GameManager>
         }
         levelStack.Push(name);
     }
-    
+
     public void UnloadCurrentLevel() => SceneManager.UnloadSceneAsync(levelStack.Pop());
 }
