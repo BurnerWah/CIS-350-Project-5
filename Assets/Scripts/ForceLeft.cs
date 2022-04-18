@@ -1,5 +1,5 @@
 /*
- * Robert Krawczyk
+ * Robert Krawczyk, Conner Ogle
  * Project 5
  * Placeholder until open map is implemented. Constantly adds force left
  */
@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class ForceLeft : MonoBehaviour
 {
-    float forcePerSecond = 10;
+    float forcePerSecond = 100;
     Rigidbody2D rb;
 
     void Start()
