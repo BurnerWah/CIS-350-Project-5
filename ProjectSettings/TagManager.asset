@@ -11,6 +11,10 @@ TagManager:
   - Missile
   - Submarine
   - LevelManager
+<<<<<<< HEAD
+  - MainMenu
+=======
+>>>>>>> 72235660cbc85d8c03c64be0d31e17b8aea259a2
   layers:
   - Default
   - TransparentFX
