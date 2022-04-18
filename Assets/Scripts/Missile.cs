@@ -30,6 +30,7 @@ public class Missile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         startingAngle = transform.rotation;
 
         // Lock target
@@ -46,7 +47,7 @@ public class Missile : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        
+   
     }
 
     // Update is called once per frame

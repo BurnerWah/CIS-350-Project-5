@@ -12,7 +12,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public Submarine SubmarineS;
     Stack<string> levelStack = new Stack<string>();
 
     public void LoadLevel(string name)
