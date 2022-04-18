@@ -3,23 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Wall
-  - Enemy
-  - Friend
-  - Boss
-  - Missile
-  - Submarine
-  - LevelManager
-<<<<<<< HEAD
-  - MainMenu
-=======
->>>>>>> 72235660cbc85d8c03c64be0d31e17b8aea259a2
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Foreground
+  - 
   - Water
   - UI
   - 
@@ -49,12 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: TV
-    uniqueID: 4259331059
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Above
-    uniqueID: 597581085
     locked: 0
