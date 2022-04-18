@@ -40,8 +40,7 @@ public class BossCovid : MonoBehaviour
         if (BossHealth == 0)
         {
             Death();
-            GameManager.Instance.UnloadCurrentLevel();
-            GameManager.Instance.LoadLevel("MainMenu");
+            GameManager.Instance.BossLevelGameOver(true);
         }
         curr_attackCooldown -= Time.deltaTime;
     }
