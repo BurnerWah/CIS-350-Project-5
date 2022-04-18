@@ -18,6 +18,7 @@ public class Missile : MonoBehaviour
     // Settings
     public float speed = 15, aimSecondsEarly = 0.01f;
 
+
     // Backend
     Quaternion startingAngle;
     float timeAlive = 0;
@@ -44,6 +45,8 @@ public class Missile : MonoBehaviour
         }
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+
+        
     }
 
     // Update is called once per frame
@@ -85,7 +88,8 @@ public class Missile : MonoBehaviour
         }
         else if (obj.CompareTag("Enemy"))
         {
-            print("hit covid. gain score or something");
+            
+            print("Covid Killed: ");
             Destroy(obj);
             Explode();
         }

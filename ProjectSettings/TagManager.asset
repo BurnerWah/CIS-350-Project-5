@@ -9,6 +9,8 @@ TagManager:
   - Friend
   - Boss
   - Missile
+  - Submarine
+  - LevelManager
   layers:
   - Default
   - TransparentFX

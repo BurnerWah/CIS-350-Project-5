@@ -13,6 +13,7 @@ public class BossCovid : MonoBehaviour
     // boss health, 10 hits to kill
     public int BossHealth = 10;
 
+
     // variables
     public GameObject player;
     [SerializeField] GameObject CovidCell;
@@ -28,6 +29,7 @@ public class BossCovid : MonoBehaviour
 
     void Start()
     {
+        
         covidRb = CovidCell.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("/Player");
     }
@@ -38,6 +40,8 @@ public class BossCovid : MonoBehaviour
         if (BossHealth == 0)
         {
             Death();
+            GameManager.Instance.UnloadCurrentLevel();
+            GameManager.Instance.LoadLevel("MainMenu");
         }
         curr_attackCooldown -= Time.deltaTime;
     }
