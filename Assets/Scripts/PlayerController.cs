@@ -1,5 +1,5 @@
 /*
- * Robert Krawczyk
+ * Robert Krawczyk, Jaden Pleasants
  * Project 5
  * Moves from input, stays in boundaries, and shoots from input
  */
@@ -17,17 +17,20 @@ public class PlayerController : MonoBehaviour
     public int playerHealth = 10;
 
     // Settings
-    float leftrightSpeed = 7, updownSpeed = 5;
-    float missileCooldown = .5f, curr_missileCooldown = 0;
-    float rBoundary = 8, lBoundary = -8, upBoundary = 3, downBoundary = -3;
+    readonly float leftrightSpeed = 7;
+    readonly float updownSpeed = 5;
+    readonly float missileCooldown = .5f;
+    float curr_missileCooldown = 0;
+    readonly float rBoundary = 8;
+    readonly float lBoundary = -8;
+    readonly float upBoundary = 3;
+    readonly float downBoundary = -3;
 
-    // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Movement

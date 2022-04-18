@@ -1,9 +1,8 @@
 /*
- * Robert Krawczyk, Conner Ogle
+ * Robert Krawczyk, Conner Ogle, Jaden Pleasants
  * Project 5
  * Targets, moves, turns slightly, explodes and kills
  */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +20,9 @@ public class Missile : MonoBehaviour
 
     // Backend
     Quaternion startingAngle;
-    float timeAlive = 0, targetingTimePerDistance, targetingDuration;
+    float timeAlive = 0;
+    float targetingTimePerDistance;
+    float targetingDuration;
     bool onTarget = false;
     bool sticking;
 
@@ -33,17 +34,20 @@ public class Missile : MonoBehaviour
         // Lock target
         followMouse.Lock();
 
-        // Determine targeting duration
-        targetingDuration = Mathf.Max((1 / speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0); // can't be negative
+        // Determine targeting duration (can't be zero)
+        targetingDuration = Mathf.Max((1 / speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0);
 
-        if (startingAngle == idealAngleObj.transform.rotation) { onTarget = true; } // save computation time if shooting straight
+        // save computation time if shooting straight
+        if (startingAngle == idealAngleObj.transform.rotation)
+        {
+            onTarget = true;
+        }
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "BossLevel")
         {
             BossCovidScript = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossCovid>();
         }
-
     }
 
     // Update is called once per frame
@@ -103,8 +107,8 @@ public class Missile : MonoBehaviour
             Explode();
         }
     }
-    void OnCollisionEnter2D(Collision2D collision) { OnTrigger2DOrCollision2D(collision.gameObject); }
-    private void OnTriggerEnter2D(Collider2D collision) { OnTrigger2DOrCollision2D(collision.gameObject); }
+    void OnCollisionEnter2D(Collision2D collision) => OnTrigger2DOrCollision2D(collision.gameObject);
+    void OnTriggerEnter2D(Collider2D collision) => OnTrigger2DOrCollision2D(collision.gameObject);
 
     void Explode()
     {

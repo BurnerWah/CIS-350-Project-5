@@ -3,7 +3,6 @@
  * Project 5
  * Reliably is at mouse position
  */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +18,8 @@ public class FollowMouse : MonoBehaviour
 
     void Awake()
     {
-        name = "MousePosition"; // to make sure
+        // to make sure
+        name = "MousePosition";
         EarlyUpdate();
     }
 
