@@ -1,5 +1,5 @@
 /*
- * Robert Krawczyk
+ * Robert Krawczyk, Gerard Lamoureux
  * Project 5
  * Destroys self when out of bounds
  */
