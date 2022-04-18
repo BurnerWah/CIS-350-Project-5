@@ -1,5 +1,5 @@
 /*
- * Robert Krawczyk, Jaden Pleasants, Conner Ogle
+ * Robert Krawczyk, Jaden Pleasants, Conner Ogle, Gerard Lamoureux
  * Project 5
  * Moves from input, stays in boundaries, and shoots from input
  */
@@ -46,6 +46,17 @@ public class PlayerController : MonoBehaviour
             // Fire missile
             GameObject missile = Instantiate(missilePrefab, missileSpawnPosition.position, missileSpawnPosition.rotation);
             curr_missileCooldown = missileCooldown;
+        }
+        if(GameManager.Instance.humanHealth <= 0)
+        {
+            if(GameManager.Instance.GetCurrentLevel() == "OperationMissionSubmarineBigfish")
+            {
+                GameManager.Instance.LevelOneGameOver();
+            }
+            else if(GameManager.Instance.GetCurrentLevel() == "BossLevel")
+            {
+                GameManager.Instance.BossLevelGameOver(false);
+            }
         }
     }
 }

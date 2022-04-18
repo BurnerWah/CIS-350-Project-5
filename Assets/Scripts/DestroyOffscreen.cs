@@ -1,5 +1,5 @@
 /*
- * Robert Krawczyk
+ * Robert Krawczyk, Gerard Lamoureux
  * Project 5
  * Destroys self when out of bounds
  */
@@ -15,6 +15,11 @@ public class DestroyOffscreen : MonoBehaviour
     {
         if (Mathf.Abs(transform.position.x) > leftrightBoundary || Mathf.Abs(transform.position.y) > updownBoundary)
         {
+            if(gameObject.CompareTag("Enemy"))
+            {
+                Debug.Log(GameManager.Instance.humanHealth);
+                GameManager.Instance.humanHealth--;
+            }
             Destroy(gameObject);
         }
     }
