@@ -17,6 +17,7 @@ public class DestroyOffscreen : MonoBehaviour
         {
             if(gameObject.CompareTag("Enemy"))
             {
+                Debug.Log(GameManager.Instance.humanHealth);
                 GameManager.Instance.humanHealth--;
             }
             Destroy(gameObject);

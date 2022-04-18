@@ -89,7 +89,7 @@ public class Missile : MonoBehaviour
         }
         else if (obj.CompareTag("Enemy"))
         {
-            
+            GameManager.Instance.score++;
             print("Covid Killed: ");
             Destroy(obj);
             Explode();
