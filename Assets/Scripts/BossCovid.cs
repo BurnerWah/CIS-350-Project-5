@@ -11,13 +11,15 @@ using UnityEngine.UI;
 public class BossCovid : MonoBehaviour
 {
     // boss health, 10 hits to kill
-    public int BossHealth = 10;
+    public int BossMaxHealth = 10;
+    public int BossHealth;
 
 
     // variables
     public GameObject player;
     [SerializeField] GameObject CovidCell;
     [SerializeField] Transform AttackSpawnPosition;
+    public HealthBar HealthBar;
     Rigidbody2D covidRb;
     float attackCooldown = 1.5f;
     float curr_attackCooldown = 0;
@@ -29,7 +31,7 @@ public class BossCovid : MonoBehaviour
 
     void Start()
     {
-        
+        BossHealth = BossMaxHealth;
         covidRb = CovidCell.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("/Player");
     }

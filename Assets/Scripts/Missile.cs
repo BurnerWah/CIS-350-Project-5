@@ -97,7 +97,8 @@ public class Missile : MonoBehaviour
         //added boss tag, decrements his health by 1 each hit
         else if (obj.CompareTag("Boss"))
         {
-            obj.GetComponent<BossCovid>().BossHealth = obj.GetComponent<BossCovid>().BossHealth - 1;
+            obj.GetComponent<BossCovid>().BossHealth--;
+            obj.GetComponent<BossCovid>().HealthBar.UpdateHealth();
             print(obj.GetComponent<BossCovid>().BossHealth);
             Explode();
         }
