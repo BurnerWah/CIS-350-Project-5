@@ -14,7 +14,7 @@ public class SubmarineTurret : MonoBehaviour
 
     // Settings
     // offsetting can be annoying
-    public bool offsetting = false;
+    public readonly bool offsetting = false;
     readonly float offsetDegrees = 20;
     readonly float startOffsettingDist = 3f;
     readonly float offsettingRange = 4f;

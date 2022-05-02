@@ -19,6 +19,7 @@ public class DestroyOffscreen : MonoBehaviour
             {
                 Debug.Log(GameManager.Instance.humanHealth);
                 GameManager.Instance.humanHealth--;
+                FindObjectOfType<UIManager>().DamageUI();
             }
             Destroy(gameObject);
         }

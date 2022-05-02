@@ -28,7 +28,7 @@ public class StoryClicker : MonoBehaviour
     {
         newsText = newsPanel.transform.GetChild(0).GetComponent<Text>();
         newsText.text = "News: Everyone have a wonderful day!";
-        StartCoroutine(StartWait(2f));
+        StartCoroutine(StartWait(.25f));
     }
 
     // Update is called once per frame
@@ -65,24 +65,24 @@ public class StoryClicker : MonoBehaviour
             usa.SetActive(false);
             plane.SetActive(true);
             newsText.text = "News: Oh Wait! What's this?";
-            StartCoroutine(StartWait(2f));
+            StartCoroutine(StartWait(.25f));
         }
         else if (moment == 2)
         {
             newsText.text = "News: Getting reports that a new variant of Covid-19 is enroute to the United States!";
-            StartCoroutine(StartWait(2f));
+            StartCoroutine(StartWait(.25f));
         }
         else if (moment == 3)
         {
             usa.SetActive(true);
             plane.SetActive(false);
             newsText.text = "News: The Infection and Death Counts are Rising!!!";
-            StartCoroutine(StartWait(2f));
+            StartCoroutine(StartWait(.25f));
         }
         else if (moment == 4)
         {
             newsText.text = "News: Everyone go get vaccinated!";
-            StartCoroutine(StartWait(2f));
+            StartCoroutine(StartWait(.25f));
         }
         else if (moment == 5)
         {
@@ -93,13 +93,13 @@ public class StoryClicker : MonoBehaviour
             couch.SetActive(false);
             syringe.SetActive(true);
             skin.SetActive(true);
-            StartCoroutine(StartWait(2f));
+            StartCoroutine(StartWait(.25f));
         }
         else if(moment == 6)
         {
             subParent.SetActive(true);
             newsText.text = "Release the Submarine Army!";
-            StartCoroutine(StartWait(3f));
+            StartCoroutine(StartWait(.45f));
         }
         else if(moment == 7)
         {

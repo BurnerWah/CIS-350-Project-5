@@ -14,6 +14,7 @@ public class Missile : MonoBehaviour
     [SerializeField] GameObject idealAngleObj;
     [SerializeField] FollowMouse followMouse;
     public BossCovid BossCovidScript;
+    SubmarineTurret turret;
 
     // Settings
     public float speed = 15, aimSecondsEarly = 0.01f;
@@ -40,14 +41,14 @@ public class Missile : MonoBehaviour
         targetingDuration = Mathf.Max((1 / speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0);
 
         // save computation time if shooting straight
-        if (startingAngle == idealAngleObj.transform.rotation)
+        if (turret.offsetting || startingAngle == idealAngleObj.transform.rotation)
         {
             onTarget = true;
         }
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-   
+        turret = FindObjectOfType<SubmarineTurret>();
     }
 
     // Update is called once per frame
@@ -90,6 +91,7 @@ public class Missile : MonoBehaviour
         else if (obj.CompareTag("Enemy"))
         {
             GameManager.Instance.score++;
+            FindObjectOfType<UIManager>().ScoreUI();
             print("Covid Killed: ");
             Destroy(obj);
             Explode();
@@ -106,6 +108,7 @@ public class Missile : MonoBehaviour
         {
             print("hit red blood cell. lose score or something");
             GameManager.Instance.humanHealth--;
+            FindObjectOfType<UIManager>().DamageUI();
             Destroy(obj);
             Explode();
         }

@@ -12,12 +12,11 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform missileSpawnPosition;
     [SerializeField] GameObject missilePrefab;
-
-    //health for now
+    Rigidbody2D rb;
 
     // Settings
-    readonly float leftrightSpeed = 7;
-    readonly float updownSpeed = 5;
+    readonly float leftrightForce = 600;
+    readonly float updownForce = 500;
     readonly float missileCooldown = .5f;
     float curr_missileCooldown = 0;
     readonly float rBoundary = 8;
@@ -27,17 +26,17 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         // Movement
-        transform.Translate(Input.GetAxis("Horizontal") * Vector3.right * leftrightSpeed * Time.deltaTime);
-        transform.Translate(Input.GetAxis("Vertical") * Vector3.up * updownSpeed * Time.deltaTime);
+        rb.AddForce(Input.GetAxis("Horizontal") * Vector3.right * leftrightForce * Time.deltaTime);
+        rb.AddForce(Input.GetAxis("Vertical") * Vector3.up * updownForce * Time.deltaTime);
 
         // Clamp X, clamp Y, keep Z the same
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, lBoundary, rBoundary), Mathf.Clamp(transform.position.y, downBoundary, upBoundary), transform.position.z);
+        //transform.position = new Vector3(Mathf.Clamp(transform.position.x, lBoundary, rBoundary), Mathf.Clamp(transform.position.y, downBoundary, upBoundary), transform.position.z);
 
         // Firing Missile
         curr_missileCooldown -= Time.deltaTime;

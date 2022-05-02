@@ -14,39 +14,51 @@ public class CovidCell : MonoBehaviour
     Rigidbody2D rb;
 
     // Settings
-    public float restingScale = 1;
-    public float attackScale = 1.6f;
-    public float attackTransitionTime = .2f;
-    public float attackDuration = 1.5f;
-    public float attackForce = 350;
-    public float attackCooldown = 3.5f;
-    public float sightRange = 10;
+    float restingScale = 1;
+    float attackScale = 2f;
+    float attackTransitionTime = .2f;
+    float attackDuration = .5f;
+    float attackForce = 850;
+    float attackCooldown = 1.5f;
+    float sightRange = 10;
+    float playerHitForce = 50;
 
     // Backend
-    float curr_attackCooldown = 3, curr_attackTime = 0;
-    bool attacking = false;
+    float curr_attackCooldown = 0, curr_attackTime = 0;
+    bool attacking = false, inRange = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // Eventually remove this and have the Spawn Manager set it for me, to save on computation
         player = GameObject.Find("/Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Time to start attack?
+        
         curr_attackCooldown -= Time.deltaTime;
-        if (curr_attackCooldown <= 0)
+
+        // Close enough to player?
+        if (Vector2.Distance(transform.position, player.transform.position) <= sightRange && transform.position.x > -7)
         {
-            curr_attackCooldown = attackCooldown;
-            // If player in range, attack
-            if (Vector2.Distance(transform.position, player.transform.position) <= sightRange)
+            if (!inRange || curr_attackCooldown <= 0)
             {
+                inRange = true;
+                // If player in range, attack
+                curr_attackCooldown = attackCooldown;
                 StartAttack();
             }
         }
+        else
+        {
+            if (inRange)
+            {
+                // Exiting sight range
+                inRange = false;
+            }
+        }
+        
 
         // While attacking
         if (attacking)
@@ -79,5 +91,13 @@ public class CovidCell : MonoBehaviour
 
         attacking = true;
         curr_attackTime = 0;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce( playerHitForce*( collision.gameObject.transform.position - transform.position ) );
+        }
     }
 }
