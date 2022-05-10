@@ -1,5 +1,5 @@
 /*
- * Robert Krawczyk, Jaden Pleasants
+ * Robert Krawczyk, Jaden Pleasants, Gerard Lamoureux
  * Project 5
  * Dash and get BIG every few seconds
  */
@@ -18,13 +18,13 @@ public class CovidCell : MonoBehaviour
     float attackScale = 2f;
     float attackTransitionTime = .2f;
     float attackDuration = .5f;
-    float attackForce = 850;
-    float attackCooldown = 1.5f;
+    float attackForce = 350;
+    float attackCooldown = 2.0f;
     float sightRange = 10;
     float playerHitForce = 50;
 
     // Backend
-    float curr_attackCooldown = 0, curr_attackTime = 0;
+    float curr_attackCooldown = 2, curr_attackTime = 0;
     bool attacking = false, inRange = false;
 
     void Start()

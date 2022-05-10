@@ -22,8 +22,8 @@ public class BossCovid : MonoBehaviour
     public HealthBar HealthBar;
     Rigidbody2D covidRb;
     float attackCooldown = 1.5f;
-    float curr_attackCooldown = 0;
-    float attackForce = 300;
+    float curr_attackCooldown = 3;
+    float attackForce = 100;
 
     // make boss speak every couple of attacks, not implemented
     public GameObject bossSpeech;

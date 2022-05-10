@@ -33,8 +33,12 @@ public class GameManager : Singleton<GameManager>
         }
         levelStack.Push(name);
     }
-    
-    public void UnloadCurrentLevel() => SceneManager.UnloadSceneAsync(levelStack.Pop());
+
+    public void UnloadCurrentLevel()
+    {
+        SceneManager.UnloadSceneAsync(levelStack.Pop());
+        DeleteClones();
+    }
 
     public string GetCurrentLevel() => levelStack.Peek();
 
@@ -83,6 +87,17 @@ public class GameManager : Singleton<GameManager>
     public void Retry()
     {
         SceneManager.UnloadSceneAsync(levelStack.Peek());
+        DeleteClones();
         LoadLevel(levelStack.Peek());
+    }
+
+    public void DeleteClones()
+    {
+        var clones = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(var clone in clones)
+        {
+            if (clone.name == "Covid cell(Clone)")
+                Destroy(clone);
+        }
     }
 }

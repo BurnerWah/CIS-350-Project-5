@@ -1,4 +1,4 @@
-/* Robert Krawczyk
+/* Robert Krawczyk, Gerard Lamoureux
  * Mission Operation Bigfish
  * Text and damage gradient
  */
@@ -21,14 +21,17 @@ public class UIManager : MonoBehaviour
     {
         damageGradient = GameObject.Find("damage gradient").GetComponent<SpriteRenderer>();
         damageGradient.gameObject.SetActive(false);
-        healthText.text = $"Health: {GameManager.Instance.humanHealth}";
-        scoreText.text = $"Score: {GameManager.Instance.score}";
+        if(healthText != null)
+            healthText.text = $"Health: {GameManager.Instance.humanHealth}";
+        if(scoreText != null)
+            scoreText.text = $"Score: {GameManager.Instance.score}";
     }
 
     // UI when killing a covid cell (called by Missile)
     public void ScoreUI()
     {
-        scoreText.text = $"Score: {GameManager.Instance.score}";
+        if(scoreText != null)
+            scoreText.text = $"Score: {GameManager.Instance.score}";
     }
 
     // UI when taking damage (called by other DestroyOffscreen and Missile)
