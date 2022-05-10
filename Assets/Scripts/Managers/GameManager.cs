@@ -26,6 +26,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject levelTwoButton;
     [SerializeField] private GameObject levelThreeButton;
 
+    [SerializeField] private GameObject mainMenuLevelTwoButton;
+    [SerializeField] private GameObject mainMenuLevelThreeButton;
+
     public void LoadLevel(string name)
     {
         var ao = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
@@ -74,16 +77,48 @@ public class GameManager : Singleton<GameManager>
         {
             levelTwoButton.SetActive(true);
             levelThreeButton.SetActive(false);
+            mainMenuLevelTwoButton.SetActive(true);
         }
         else
         {
             levelTwoButton.SetActive(false);
             levelThreeButton.SetActive(true);
+            mainMenuLevelThreeButton.SetActive(true);
         }
         humanHealth = 5;
         Pause();
-        gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
+        if(score < 30)
+        {
+            gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
+                "Game Over!\nYou killed " + score + " Cells!\nTry to kill more for Next Level!";
+            if (level == 1)
+            {
+                levelTwoButton.SetActive(false);
+                levelThreeButton.SetActive(false);
+            }
+            else
+            {
+                levelTwoButton.SetActive(false);
+                levelThreeButton.SetActive(false);
+            }
+        }
+        else
+        {
+            gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
                 "Game Over!\nYou killed " + score + " Cells!";
+            if (level == 1)
+            {
+                levelTwoButton.SetActive(true);
+                levelThreeButton.SetActive(false);
+                mainMenuLevelTwoButton.SetActive(true);
+            }
+            else
+            {
+                levelTwoButton.SetActive(false);
+                levelThreeButton.SetActive(true);
+                mainMenuLevelThreeButton.SetActive(true);
+            }
+        }
         score = 0;
     }
 

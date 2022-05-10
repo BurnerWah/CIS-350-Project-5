@@ -37,7 +37,7 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnRandomPrefab();
             i++;
-            float delay = (120 - i)/120;
+            float delay = (100 - i)/100;
             if (delay < 0.3f)
                 delay = 0.3f;
 
@@ -56,11 +56,24 @@ public class SpawnManager : MonoBehaviour
     //spawns cells
     void SpawnRandomPrefab()
     {
-        //pick a cell index
         int prefabIndex = Random.Range(0, prefabToSpawn.Length);
-
+        if(prefabIndex == 2)
+        {
+            if(Random.Range(0,3) < 2)
+            {
+                prefabIndex = 1;
+            }
+        }
+        Vector2 SpawnPos;
         //generate a random spawn position
-        Vector2 SpawnPos = new Vector2(SpawnPosX, Random.Range(bottomBound,upperBound));
+        if(prefabIndex == 2)
+        {
+            SpawnPos = new Vector2(SpawnPosX, 0);
+        }
+        else
+        {
+            SpawnPos = new Vector2(SpawnPosX, Random.Range(bottomBound, upperBound));
+        }
 
         Instantiate(prefabToSpawn[prefabIndex], SpawnPos, prefabToSpawn[prefabIndex].transform.rotation);
     }
