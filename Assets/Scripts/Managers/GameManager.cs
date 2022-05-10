@@ -147,6 +147,18 @@ public class GameManager : Singleton<GameManager>
             if (clone.name == "Covid cell(Clone)")
                 Destroy(clone);
         }
+        clones = GameObject.FindGameObjectsWithTag("Friend");
+        foreach (var clone in clones)
+        {
+            if (clone.name == "Red blood cell(Clone)")
+                Destroy(clone);
+        }
+        clones = GameObject.FindGameObjectsWithTag("Missile");
+        foreach (var clone in clones)
+        {
+            if (clone.name == "Missile(Clone)")
+                Destroy(clone);
+        }
     }
 
     public void SetLevel(int i)
