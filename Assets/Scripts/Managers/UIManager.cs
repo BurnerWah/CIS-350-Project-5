@@ -37,7 +37,8 @@ public class UIManager : MonoBehaviour
     // UI when taking damage (called by other DestroyOffscreen and Missile)
     public void DamageUI()
     {
-        healthText.text = $"Health: {GameManager.Instance.humanHealth}";
+        if(healthText != null)
+            healthText.text = $"Health: {GameManager.Instance.humanHealth}";
         damageGradient.gameObject.SetActive(true);
         timeDamageTaken = Time.time;
         damageGradientOn = true;

@@ -19,9 +19,12 @@ public class GameManager : Singleton<GameManager>
 
     public int score = 0;
 
+    public int level = 0;
+
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject levelOneButton;
     [SerializeField] private GameObject levelTwoButton;
+    [SerializeField] private GameObject levelThreeButton;
 
     public void LoadLevel(string name)
     {
@@ -47,6 +50,7 @@ public class GameManager : Singleton<GameManager>
         gameOverUI.SetActive(true);
         levelOneButton.SetActive(true);
         levelTwoButton.SetActive(false);
+        levelThreeButton.SetActive(false);
         humanHealth = 5;
         score = 0;
         Pause();
@@ -66,7 +70,16 @@ public class GameManager : Singleton<GameManager>
     {
         gameOverUI.SetActive(true);
         levelOneButton.SetActive(false);
-        levelTwoButton.SetActive(true);
+        if(level == 1)
+        {
+            levelTwoButton.SetActive(true);
+            levelThreeButton.SetActive(false);
+        }
+        else
+        {
+            levelTwoButton.SetActive(false);
+            levelThreeButton.SetActive(true);
+        }
         humanHealth = 5;
         Pause();
         gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
@@ -100,4 +113,10 @@ public class GameManager : Singleton<GameManager>
                 Destroy(clone);
         }
     }
+
+    public void SetLevel(int i)
+    {
+        level = i;
+    }
+
 }

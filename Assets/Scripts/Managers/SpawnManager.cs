@@ -1,5 +1,5 @@
 /*
- * Conner Ogle
+ * Conner Ogle, Gerard Lamoureux
  * Project 5
  * Handles Spawn management
  */
@@ -32,14 +32,18 @@ public class SpawnManager : MonoBehaviour
     {
         //add a 1.5 second delay befire first spawning objects
         yield return new WaitForSeconds(1.5f);
-
+        float i=0;
         while (!levelFinished)
         {
             SpawnRandomPrefab();
+            i++;
+            float delay = (120 - i)/120;
+            if (delay < 0.3f)
+                delay = 0.3f;
 
-            float RandomDelay = Random.Range(0.5f, 1f);
+            Debug.Log(delay);
 
-            yield return new WaitForSeconds(RandomDelay);
+            yield return new WaitForSeconds(delay);
         }
     }
     // Update is called once per frame

@@ -40,6 +40,8 @@ public class Missile : MonoBehaviour
         // Determine targeting duration (can't be zero)
         targetingDuration = Mathf.Max((1 / speed) * Vector3.Distance(transform.position, followMouse.transform.position) - aimSecondsEarly, 0);
 
+        turret = FindObjectOfType<SubmarineTurret>();
+
         // save computation time if shooting straight
         if (turret.offsetting || startingAngle == idealAngleObj.transform.rotation)
         {
@@ -47,8 +49,6 @@ public class Missile : MonoBehaviour
         }
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-
-        turret = FindObjectOfType<SubmarineTurret>();
     }
 
     // Update is called once per frame

@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     // Settings
     readonly float leftrightForce = 600;
     readonly float updownForce = 500;
-    readonly float missileCooldown = .5f;
+    readonly float missileCooldown = .3f;
     float curr_missileCooldown = 0;
     readonly float rBoundary = 8;
     readonly float lBoundary = -8;
@@ -48,11 +48,11 @@ public class PlayerController : MonoBehaviour
         }
         if(GameManager.Instance.humanHealth <= 0)
         {
-            if(GameManager.Instance.GetCurrentLevel() == "OperationMissionSubmarineBigfish")
+            if(GameManager.Instance.level == 1 || GameManager.Instance.level == 2)
             {
                 GameManager.Instance.LevelOneGameOver();
             }
-            else if(GameManager.Instance.GetCurrentLevel() == "BossLevel")
+            else if(GameManager.Instance.level == 3)
             {
                 GameManager.Instance.BossLevelGameOver(false);
             }
