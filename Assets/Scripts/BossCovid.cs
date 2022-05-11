@@ -12,7 +12,7 @@ public class BossCovid : MonoBehaviour
 {
     // boss health, 10 hits to kill
     public int BossMaxHealth = 10;
-    public int BossHealth;
+    private int bossHealth;
 
 
     // variables
@@ -28,6 +28,7 @@ public class BossCovid : MonoBehaviour
     // make boss speak every couple of attacks, not implemented
     public GameObject bossSpeech;
 
+    public int BossHealth { get => bossHealth; set => bossHealth = value; }
 
     void Start()
     {
