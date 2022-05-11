@@ -36,7 +36,7 @@ public class CovidCell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         curr_attackCooldown -= Time.deltaTime;
 
         // Close enough to player?
@@ -58,7 +58,7 @@ public class CovidCell : MonoBehaviour
                 inRange = false;
             }
         }
-        
+
 
         // While attacking
         if (attacking)
@@ -97,7 +97,7 @@ public class CovidCell : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce( playerHitForce*( collision.gameObject.transform.position - transform.position ) );
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(playerHitForce * (collision.gameObject.transform.position - transform.position));
         }
     }
 }

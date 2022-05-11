@@ -22,13 +22,13 @@ public class StoryCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(clicker.moment == 4 && moment != 4)
+        if (clicker.moment == 4 && moment != 4)
         {
             moment = 4;
             gameObject.GetComponent<Camera>().orthographicSize = 18;
             transform.position = new Vector3(transform.position.x, -7, transform.position.z);
         }
-        if(clicker.moment == 6 && moment != 6)
+        if (clicker.moment == 6 && moment != 6)
         {
             moment = 6;
             gameObject.GetComponent<Camera>().orthographicSize = 3;

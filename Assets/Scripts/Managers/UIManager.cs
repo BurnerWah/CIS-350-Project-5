@@ -21,30 +21,40 @@ public class UIManager : MonoBehaviour
     {
         damageGradient = GameObject.Find("damage gradient").GetComponent<SpriteRenderer>();
         damageGradient.gameObject.SetActive(false);
-        if(healthText != null)
+        if (healthText != null)
+        {
             healthText.text = $"Health: {GameManager.Instance.humanHealth}";
-        if(scoreText != null)
+        }
+
+        if (scoreText != null)
+        {
             scoreText.text = $"Score: {GameManager.Instance.score}";
+        }
     }
 
     // UI when killing a covid cell (called by Missile)
     public void ScoreUI()
     {
-        if(scoreText != null)
+        if (scoreText != null)
+        {
             scoreText.text = $"Score: {GameManager.Instance.score}";
+        }
     }
 
     // UI when taking damage (called by other DestroyOffscreen and Missile)
     public void DamageUI()
     {
-        if(healthText != null)
+        if (healthText != null)
+        {
             healthText.text = $"Health: {GameManager.Instance.humanHealth}";
+        }
+
         damageGradient.gameObject.SetActive(true);
         timeDamageTaken = Time.time;
         damageGradientOn = true;
     }
 
-    
+
     private void FixedUpdate()
     {
         // Make gradient fade away
@@ -62,9 +72,9 @@ public class UIManager : MonoBehaviour
                 print($"New opacity {newOpacity}");
                 SetDamageGradientOpacity(Mathf.Clamp01(newOpacity));
             }
-            
+
         }
-        
+
     }
 
     // helpful

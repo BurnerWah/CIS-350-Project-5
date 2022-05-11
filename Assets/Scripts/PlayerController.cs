@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour
             GameObject missile = Instantiate(missilePrefab, missileSpawnPosition.position, missileSpawnPosition.rotation);
             curr_missileCooldown = missileCooldown;
         }
-        if(GameManager.Instance.humanHealth <= 0)
+        if (GameManager.Instance.humanHealth <= 0)
         {
-            if(GameManager.Instance.level == 1 || GameManager.Instance.level == 2)
+            if (GameManager.Instance.level == 1 || GameManager.Instance.level == 2)
             {
                 GameManager.Instance.LevelOneGameOver();
             }
-            else if(GameManager.Instance.level == 3)
+            else if (GameManager.Instance.level == 3)
             {
                 GameManager.Instance.BossLevelGameOver(false);
             }

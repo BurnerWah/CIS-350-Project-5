@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        
+
         StartCoroutine(SpawnRandomPrefabWithCoroutine());
 
     }
@@ -32,12 +32,12 @@ public class SpawnManager : MonoBehaviour
     {
         //add a 1.5 second delay befire first spawning objects
         yield return new WaitForSeconds(1.5f);
-        float i=0;
+        float i = 0;
         while (!levelFinished)
         {
             SpawnRandomPrefab();
             i++;
-            float delay = (100 - i)/100;
+            float delay = (100 - i) / 100;
             if (delay < 0.3f)
                 delay = 0.3f;
 
@@ -57,16 +57,16 @@ public class SpawnManager : MonoBehaviour
     void SpawnRandomPrefab()
     {
         int prefabIndex = Random.Range(0, prefabToSpawn.Length);
-        if(prefabIndex == 2)
+        if (prefabIndex == 2)
         {
-            if(Random.Range(0,3) < 2)
+            if (Random.Range(0, 3) < 2)
             {
                 prefabIndex = 1;
             }
         }
         Vector2 SpawnPos;
         //generate a random spawn position
-        if(prefabIndex == 2)
+        if (prefabIndex == 2)
         {
             SpawnPos = new Vector2(SpawnPosX, 0);
         }

@@ -8,8 +8,8 @@ using System.Collections;
 using System.Collections.Generic;
 using SubmarineBigfish;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -57,15 +57,14 @@ public class GameManager : Singleton<GameManager>
         humanHealth = 5;
         score = 0;
         Pause();
-        if(win)
+        var gameovertext = gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>();
+        if (win)
         {
-            gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
-                "You Win!\nYou Killed Big Covid!";
+            gameovertext.text = "You Win!\nYou Killed Big Covid!";
         }
         else
         {
-            gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
-                "You Lose!\nRemember to Shoot the Covid Cells!";
+            gameovertext.text = "You Lose!\nRemember to Shoot the Covid Cells!";
         }
     }
 
@@ -73,7 +72,7 @@ public class GameManager : Singleton<GameManager>
     {
         gameOverUI.SetActive(true);
         levelOneButton.SetActive(false);
-        if(level == 1)
+        if (level == 1)
         {
             levelTwoButton.SetActive(true);
             levelThreeButton.SetActive(false);
@@ -87,10 +86,10 @@ public class GameManager : Singleton<GameManager>
         }
         humanHealth = 5;
         Pause();
-        if(score < 30)
+        var gameovertext = gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>();
+        if (score < 30)
         {
-            gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
-                "Game Over!\nYou killed " + score + " Cells!\nTry to kill more for Next Level!";
+            gameovertext.text = $"Game Over!\nYou killed {score} Cells!\nTry to kill more for Next Level!";
             if (level == 1)
             {
                 levelTwoButton.SetActive(false);
@@ -104,8 +103,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>().text =
-                "Game Over!\nYou killed " + score + " Cells!";
+            gameovertext.text = $"Game Over!\nYou killed {score} Cells!";
             if (level == 1)
             {
                 levelTwoButton.SetActive(true);
@@ -142,7 +140,7 @@ public class GameManager : Singleton<GameManager>
     public void DeleteClones()
     {
         var clones = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(var clone in clones)
+        foreach (var clone in clones)
         {
             if (clone.name == "Covid cell(Clone)")
                 Destroy(clone);
