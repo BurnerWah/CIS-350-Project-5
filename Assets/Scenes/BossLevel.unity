@@ -1990,8 +1990,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720448027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.486, y: 0, z: 0}
-  m_LocalScale: {x: 0.975, y: 0.69380337, z: 1}
+  m_LocalPosition: {x: -0.48600006, y: 0, z: 0}
+  m_LocalScale: {x: 0.9800001, y: 0.69380337, z: 1}
   m_Children:
   - {fileID: 2102374608}
   m_Father: {fileID: 1353123761}
@@ -2547,8 +2547,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 597581085
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.4339623, g: 0, b: 0, a: 1}
@@ -2602,11 +2602,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4424884770104520815, guid: 5f246892fd1cccc4baf2dd1d372e22d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.48
+      value: 5.35
       objectReference: {fileID: 0}
     - target: {fileID: 4424884770104520815, guid: 5f246892fd1cccc4baf2dd1d372e22d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.59
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 4424884770104520815, guid: 5f246892fd1cccc4baf2dd1d372e22d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2677,7 +2677,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossMaxHealth: 10
-  BossHealth: 10
   player: {fileID: 0}
   CovidCell: {fileID: 7550653908114762795, guid: 64e1d06b0b6ce644d8f27f493be32d0d, type: 3}
   AttackSpawnPosition: {fileID: 1771790441}

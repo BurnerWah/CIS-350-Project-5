@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41e12f901d094143acca773375bdb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceAtStart: {x: -1000, y: 0}
+  forceAtStart: {x: -2000, y: 0}
 --- !u!114 &7203894993902872307
 MonoBehaviour:
   m_ObjectHideFlags: 0
