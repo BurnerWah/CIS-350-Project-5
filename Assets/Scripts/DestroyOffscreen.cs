@@ -14,7 +14,7 @@ public class DestroyOffscreen : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(transform.position.x) > leftrightBoundary || Mathf.Abs(transform.position.y) > updownBoundary)
+        if (transform.position.x < (-leftrightBoundary))
         {
             if (gameObject.CompareTag("Enemy"))
             {
@@ -22,6 +22,10 @@ public class DestroyOffscreen : MonoBehaviour
                 GameManager.Instance.humanHealth--;
                 FindObjectOfType<UIManager>().DamageUI();
             }
+            Destroy(gameObject);
+        }
+        else if(transform.position.x > leftrightBoundary || Mathf.Abs(transform.position.y) > updownBoundary)
+        {
             Destroy(gameObject);
         }
     }
