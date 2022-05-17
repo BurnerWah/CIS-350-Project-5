@@ -42,6 +42,8 @@ public class GameManager : Singleton<GameManager>
             return;
         }
         levelStack.Push(name);
+        humanHealth = 5;
+        score = 0;
     }
 
     public void UnloadCurrentLevel()
@@ -58,14 +60,16 @@ public class GameManager : Singleton<GameManager>
         levelOneButton.SetActive(false);
         levelTwoButton.SetActive(false);
         levelThreeButton.SetActive(false);
-        infiniteButton.SetActive(true);
-        mainMenuInfiniteButton.SetActive(true);
+        infiniteButton.SetActive(false);
         humanHealth = 5;
         score = 0;
         Pause();
         var gameovertext = gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>();
         if (win)
         {
+
+            infiniteButton.SetActive(true);
+            mainMenuInfiniteButton.SetActive(true);
             gameovertext.text = "You Win!\nYou Killed Big Covid!";
         }
         else
@@ -82,14 +86,14 @@ public class GameManager : Singleton<GameManager>
         {
             levelTwoButton.SetActive(true);
             levelThreeButton.SetActive(false);
-            mainMenuLevelTwoButton.SetActive(true);
+            
         }
         else
         {
             levelTwoButton.SetActive(false);
             levelThreeButton.SetActive(true);
-            mainMenuLevelThreeButton.SetActive(true);
         }
+        infiniteButton.SetActive(false);
         humanHealth = 5;
         Pause();
         var gameovertext = gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>();
