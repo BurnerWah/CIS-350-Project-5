@@ -21,13 +21,17 @@ public class GameManager : Singleton<GameManager>
 
     public int level = 0;
 
+    [Header("Game Over Buttons")]
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject levelOneButton;
     [SerializeField] private GameObject levelTwoButton;
     [SerializeField] private GameObject levelThreeButton;
+    [SerializeField] private GameObject infiniteButton;
 
+    [Header("Main Menu Buttons")]
     [SerializeField] private GameObject mainMenuLevelTwoButton;
     [SerializeField] private GameObject mainMenuLevelThreeButton;
+    [SerializeField] private GameObject mainMenuInfiniteButton;
 
     public void LoadLevel(string name)
     {
@@ -51,9 +55,11 @@ public class GameManager : Singleton<GameManager>
     public void BossLevelGameOver(bool win)
     {
         gameOverUI.SetActive(true);
-        levelOneButton.SetActive(true);
+        levelOneButton.SetActive(false);
         levelTwoButton.SetActive(false);
         levelThreeButton.SetActive(false);
+        infiniteButton.SetActive(true);
+        mainMenuInfiniteButton.SetActive(true);
         humanHealth = 5;
         score = 0;
         Pause();
@@ -87,7 +93,7 @@ public class GameManager : Singleton<GameManager>
         humanHealth = 5;
         Pause();
         var gameovertext = gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>();
-        if (score < 30)
+        if (score < 35)
         {
             gameovertext.text = $"Game Over!\nYou killed {score} Cells!\nTry to kill more for Next Level!";
             if (level == 1)
@@ -120,6 +126,20 @@ public class GameManager : Singleton<GameManager>
         score = 0;
     }
 
+    public void InfiniteGameOver()
+    {
+        gameOverUI.SetActive(true);
+        levelOneButton.SetActive(false);
+        levelTwoButton.SetActive(false);
+        levelThreeButton.SetActive(false);
+        infiniteButton.SetActive(false);
+        humanHealth = 5;
+        Pause();
+        var gameovertext = gameOverUI.transform.Find("Panel").gameObject.transform.Find("GameOverText").gameObject.GetComponent<Text>();
+        gameovertext.text = $"Game Over!\nYou killed {score} Cells!";
+        score = 0;
+    }
+
     public void Pause()
     {
         Time.timeScale = 0f;
@@ -142,7 +162,7 @@ public class GameManager : Singleton<GameManager>
         var clones = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var clone in clones)
         {
-            if (clone.name == "Covid cell(Clone)")
+            if (clone.name == "Covid cell(Clone)" || clone.name == "covidclot(Clone)")
                 Destroy(clone);
         }
         clones = GameObject.FindGameObjectsWithTag("Friend");
@@ -155,6 +175,12 @@ public class GameManager : Singleton<GameManager>
         foreach (var clone in clones)
         {
             if (clone.name == "Missile(Clone)")
+                Destroy(clone);
+        }
+        clones = GameObject.FindGameObjectsWithTag("Boss");
+        foreach(var clone in clones)
+        {
+            if (clone.name == "BigCovid(Clone)")
                 Destroy(clone);
         }
     }

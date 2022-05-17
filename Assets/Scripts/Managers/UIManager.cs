@@ -65,11 +65,9 @@ public class UIManager : MonoBehaviour
             {
                 damageGradientOn = false;
                 damageGradient.gameObject.SetActive(false);
-                print("Turned off damage gradient");
             }
             else
             {
-                print($"New opacity {newOpacity}");
                 SetDamageGradientOpacity(Mathf.Clamp01(newOpacity));
             }
 

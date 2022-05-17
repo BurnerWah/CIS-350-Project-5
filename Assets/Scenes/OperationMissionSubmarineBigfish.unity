@@ -1039,6 +1039,8 @@ MonoBehaviour:
   prefabToSpawn:
   - {fileID: 7550653908114762795, guid: 64e1d06b0b6ce644d8f27f493be32d0d, type: 3}
   - {fileID: 5056778519413792236, guid: dff139d5823ce5e47b7501c024b55c66, type: 3}
+  - {fileID: 5551884247854765870, guid: 3c7d0e99d647bc048aa14e90667ccac8, type: 3}
+  - {fileID: 3920475977235448089, guid: 550374009bc866744b4fa8447989b73b, type: 3}
 --- !u!4 &1115603287
 Transform:
   m_ObjectHideFlags: 0

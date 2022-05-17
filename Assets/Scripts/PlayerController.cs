@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
             {
                 GameManager.Instance.BossLevelGameOver(false);
             }
+            else if(GameManager.Instance.level == 4)
+            {
+                GameManager.Instance.InfiniteGameOver();
+            }
         }
     }
 }

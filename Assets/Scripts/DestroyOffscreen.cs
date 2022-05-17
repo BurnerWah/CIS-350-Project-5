@@ -22,6 +22,12 @@ public class DestroyOffscreen : MonoBehaviour
                 GameManager.Instance.humanHealth--;
                 FindObjectOfType<UIManager>().DamageUI();
             }
+            if(gameObject.CompareTag("Boss"))
+            {
+                Debug.Log(GameManager.Instance.humanHealth);
+                GameManager.Instance.humanHealth = 0;
+                FindObjectOfType<UIManager>().DamageUI();
+            }
             Destroy(gameObject);
         }
         else if(transform.position.x > leftrightBoundary || Mathf.Abs(transform.position.y) > updownBoundary)

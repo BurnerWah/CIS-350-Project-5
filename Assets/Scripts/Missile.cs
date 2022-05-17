@@ -90,11 +90,16 @@ public class Missile : MonoBehaviour
         }
         else if (obj.CompareTag("Enemy"))
         {
-            GameManager.Instance.score++;
+            if(GameManager.Instance.level != 3)
+                GameManager.Instance.score++;
             FindObjectOfType<UIManager>().ScoreUI();
             print("Covid Killed: ");
             Destroy(obj);
             Explode();
+            if(GameManager.Instance.score >= 35 && (GameManager.Instance.level == 1 || GameManager.Instance.level == 2))
+            {
+                GameManager.Instance.LevelOneGameOver();
+            }
         }
         //added boss tag, decrements his health by 1 each hit
         else if (obj.CompareTag("Boss"))

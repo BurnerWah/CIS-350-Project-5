@@ -22,7 +22,7 @@ public class BossCovid : MonoBehaviour
     public HealthBar HealthBar;
     Rigidbody2D covidRb;
     float attackCooldown = 1.5f;
-    float curr_attackCooldown = 3;
+    float curr_attackCooldown = 1.5f;
     float attackForce = 100;
 
     // make boss speak every couple of attacks, not implemented
@@ -32,6 +32,8 @@ public class BossCovid : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.Instance.level == 4)
+            BossMaxHealth = 5;
         BossHealth = BossMaxHealth;
         covidRb = CovidCell.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("/Player");
@@ -39,17 +41,19 @@ public class BossCovid : MonoBehaviour
 
     void Update()
     {
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x - (Time.deltaTime * 1.5f), 0, gameObject.transform.position.z);
         attack();
         if (BossHealth == 0)
         {
             Death();
-            GameManager.Instance.BossLevelGameOver(true);
+            //GameManager.Instance.BossLevelGameOver(true);
         }
         curr_attackCooldown -= Time.deltaTime;
     }
 
     void Death()
     {
+        GameManager.Instance.score++;
         // celebration or something
         Destroy(gameObject);
     }
